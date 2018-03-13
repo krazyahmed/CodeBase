@@ -1,0 +1,77 @@
+By default ansible reads the inventory file present at /etc/ansible/hosts for doing remote configuration
+
+To make anyother files as inventory file we can use -i option
+
+Create a new inventory file
+vim myinventory
+192.168.60.23
+192.168.60.22
+Save and quit
+
+To use the above file
+ansible all -i myinventory -m command a- 'ls -l'
+
+To make myinventory files as the default file
+Open ansible.cfg file
+
+sudo vim /etc/ansible/ansible.cfg
+Go to [defaults] section
+Uncomment the inventory line and specify the path of myinventory
+file over here
+
+ansible.cfg file locations
+---------------------------
+1 The default ansible.cfg file is present in /etc/ansible/ansible.cfg
+  This is the last priority file.ansible.cfg file can be present at four different locations and priority is given based on that location
+
+ 1st priority is given for the config file whose path is stored in
+ ANSIBLE_CONFIG variable.
+
+  ANSIBLE_CONFIG=Path of our customised ansible.cfg file
+
+ If the above variable is not available it will search for the present
+ working directory if any ansible.cfg file is present and execute  based on  it
+
+ If ansible.cfg file is not present in pwd then it will look for 
+  .ansible.cfg file which may be present in the home directory of the
+  user and execute it
+
+ If none of the above configuration files are present then ansible
+ will execute /etc/ansible/ansible.cfg file 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
